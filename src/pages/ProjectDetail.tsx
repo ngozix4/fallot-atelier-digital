@@ -26,7 +26,7 @@ const ProjectDetail = () => {
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           {/* Hero placeholder */}
           <ScrollReveal>
-            <div className="aspect-[16/9] bg-secondary mb-16 flex items-center justify-center">
+            <div className="aspect-[16/9] bg-secondary mb-16 flex items-center justify-center border gold-border gold-glow">
               <p className="text-caption text-muted-foreground">{project.title} — Hero Image</p>
             </div>
           </ScrollReveal>

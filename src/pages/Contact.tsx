@@ -61,7 +61,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full py-4 bg-foreground text-background text-caption tracking-[0.2em] hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
+                className="w-full py-4 text-caption tracking-[0.2em] border border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground gold-glow gold-glow-hover transition-all duration-500"
               >
                 Send Inquiry
               </button>
