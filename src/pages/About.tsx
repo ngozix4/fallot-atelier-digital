@@ -14,7 +14,7 @@ const About = () => (
 
         {/* Portrait placeholder */}
         <ScrollReveal delay={0.2}>
-          <div className="aspect-[3/4] max-w-sm mx-auto bg-secondary mb-16 flex items-center justify-center">
+          <div className="aspect-[3/4] max-w-sm mx-auto bg-secondary mb-16 flex items-center justify-center border gold-border gold-glow">
             <p className="text-caption text-muted-foreground">Portrait</p>
           </div>
         </ScrollReveal>

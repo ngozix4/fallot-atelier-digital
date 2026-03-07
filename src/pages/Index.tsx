@@ -119,12 +119,12 @@ const Index = () => {
                   to={`/portfolio/${project.slug}`}
                   className="group block"
                 >
-                  <div className="aspect-[4/5] bg-secondary mb-4 overflow-hidden">
+                  <div className="aspect-[4/5] bg-secondary mb-4 overflow-hidden border gold-border gold-border-hover gold-glow-hover transition-all duration-500">
                     <div className="w-full h-full bg-muted flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
                       <p className="text-caption text-muted-foreground">{project.title}</p>
                     </div>
                   </div>
-                  <h3 className="font-heading text-xl text-foreground mb-1">{project.title}</h3>
+                  <h3 className="font-heading text-xl text-foreground mb-1 group-hover:text-accent transition-colors duration-300">{project.title}</h3>
                   <p className="text-caption text-muted-foreground">{project.year}</p>
                 </Link>
               </ScrollReveal>

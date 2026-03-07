@@ -38,7 +38,7 @@ const Services = () => (
         <div className="space-y-16">
           {services.map((service, i) => (
             <ScrollReveal key={service.title} delay={i * 0.1}>
-              <div className="border-t border-border pt-8">
+              <div className="border-t gold-border pt-8 hover:border-accent/50 transition-colors duration-500">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <h3 className="heading-subsection text-foreground">{service.title}</h3>
                   <p className="md:col-span-2 text-editorial text-muted-foreground">
