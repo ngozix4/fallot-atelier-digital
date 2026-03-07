@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Layout = ({ children }: { children: ReactNode }) => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-background dark">
     <Navbar />
     <main>{children}</main>
     <Footer />
