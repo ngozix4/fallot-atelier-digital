@@ -26,15 +26,15 @@ const ProjectDetail = () => {
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           {/* Hero placeholder */}
           <ScrollReveal>
-  <div className="aspect-[16/9] bg-secondary mb-16 flex items-center justify-center border gold-border gold-glow overflow-hidden">
+  <div className="bg-secondary mb-16 flex items-center justify-center border gold-border gold-glow overflow-hidden max-h-[80vh]">
     {project.image ? (
       <img
         src={project.image}
         alt={project.title}
-        className="w-full h-full object-cover"
+        className="w-full h-auto max-h-[80vh] object-contain"
       />
     ) : (
-      <p className="text-caption text-muted-foreground">
+      <p className="text-caption text-muted-foreground py-32">
         {project.title} — No hero image
       </p>
     )}
@@ -79,12 +79,12 @@ const ProjectDetail = () => {
         {project.gallery.map((img, idx) => (
           <div
             key={idx}
-            className="aspect-[4/3] bg-secondary border gold-border overflow-hidden"
+            className="bg-secondary border gold-border overflow-hidden flex items-center justify-center max-h-[70vh]"
           >
             <img
               src={img}
               alt={`${project.title} - ${idx + 1}`}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              className="w-full h-auto max-h-[70vh] object-contain hover:scale-105 transition-transform duration-500"
             />
           </div>
         ))}
