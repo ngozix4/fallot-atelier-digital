@@ -26,10 +26,20 @@ const ProjectDetail = () => {
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           {/* Hero placeholder */}
           <ScrollReveal>
-            <div className="aspect-[16/9] bg-secondary mb-16 flex items-center justify-center border gold-border gold-glow">
-              <p className="text-caption text-muted-foreground">{project.title} — Hero Image</p>
-            </div>
-          </ScrollReveal>
+  <div className="aspect-[16/9] bg-secondary mb-16 flex items-center justify-center border gold-border gold-glow overflow-hidden">
+    {project.image ? (
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-full object-cover"
+      />
+    ) : (
+      <p className="text-caption text-muted-foreground">
+        {project.title} — No hero image
+      </p>
+    )}
+  </div>
+</ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <p className="text-caption text-accent mb-4">{project.year}</p>
@@ -58,6 +68,30 @@ const ProjectDetail = () => {
               {project.description}
             </p>
           </ScrollReveal>
+
+          {project.gallery && project.gallery.length > 0 && (
+  <ScrollReveal delay={0.4}>
+    <div className="mt-16">
+      <h2 className="heading-subsection text-foreground text-center mb-8">
+        Gallery
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {project.gallery.map((img, idx) => (
+          <div
+            key={idx}
+            className="aspect-[4/3] bg-secondary border gold-border overflow-hidden"
+          >
+            <img
+              src={img}
+              alt={`${project.title} - ${idx + 1}`}
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </ScrollReveal>
+)}
 
           <div className="luxury-divider" />
 

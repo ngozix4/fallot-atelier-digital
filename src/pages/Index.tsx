@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import { projects } from "@/lib/projects";
-import heroImage from "@/assets/hero-fabric.jpg";
+import heroImage from "@/assets/SewAfrica-Getting-An-Award.jpeg";
 import atelierImage from "@/assets/atelier-interior.jpg";
 
 const Index = () => {

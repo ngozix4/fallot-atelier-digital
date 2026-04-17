@@ -5,25 +5,37 @@ export interface Project {
   role: string;
   collaborators: string;
   description: string;
+  image?: string;
+  gallery?: string[];
 }
 
 export const projects: Project[] = [
   {
-    slug: "isdwadlo",
-    title: "Isdwadlo",
-    year: "2020",
-    role: "Co-Founder & Designer",
-    collaborators: "Isdwadlo Collective",
-    description: "A Johannesburg-based streetwear collective that disrupted its space and captured radio attention — proof that range extends beyond couture into culture. Bold, unapologetic, and rooted in community.",
+  slug: "isdwadlo",
+  title: "Isdwadlo Collective",
+  year: "2021",
+  role: "Co-Founder & Designer",
+  collaborators: "Isdwadlo Team",
+  description: "A Johannesburg-based streetwear collective that disrupted the scene...",
+  image: "/assets/hero-fabric.jpg",
+  gallery: [
+    "/assets/Isdwadlo-Fashion-Show-Red-TrackSuit.jpeg",
+    "/assets/Isdwadlo-Red-Pants-Yellow-Jacket.jpeg"
+  ],
   },
   {
-    slug: "sew-africa",
-    title: "Sew Africa",
-    year: "2019–2021",
-    role: "Student & Award Winner",
-    collaborators: "Sew Africa Faculty",
-    description: "The formative years where artistry matured into precision. Earning Student of the Year twice consecutively and claiming top honors across multiple fashion contests. Designs not only seen — but recognized.",
-  },
+  slug: "sew-africa",
+  title: "Sew Africa",
+  year: "2019",
+  role: "Designer & Award Recipient",
+  collaborators: "Sew Africa",
+  description: "Awarded Student of the Year twice consecutively...",
+  image: "../assets/SewAfrica-Getting-An-Award.jpeg",
+  gallery: [
+    "../assets/SewAfrica-Getting-An-Award.jpeg",
+    "../assets/SewAfrica-Certificate-Of-Completion.jpeg"
+  ],
+},
   {
     slug: "xvii-victorian",
     title: "XVII Victorian",
@@ -32,14 +44,7 @@ export const projects: Project[] = [
     collaborators: "XVII Victorian, Durban",
     description: "Mastering the delicate architecture of wedding gowns and formalwear alongside a master of the craft. Every stitch a lesson in patience, structure, and the art of making fabric breathe.",
   },
-  {
-    slug: "denour",
-    title: "Denour",
-    year: "2023",
-    role: "Designer & Pattern Cutter",
-    collaborators: "Denour Design House",
-    description: "A collaboration in precision tailoring and pattern innovation. Pushing boundaries in silhouette construction and fabric manipulation with refined elegance.",
-  },
+ 
   {
     slug: "tokelo-laka",
     title: "Tokelo Laka",
@@ -49,8 +54,8 @@ export const projects: Project[] = [
     description: "A creative dialogue between two distinct design voices, resulting in pieces that balance raw expression with structural refinement. Fashion as conversation.",
   },
   {
-    slug: "darion-hing-the-poligamy",
-    title: "Darion Hing – The Poligamy",
+    slug: "netflix-the-poligamy",
+    title: "Netflix – The Poligamy",
     year: "2025",
     role: "Costume Designer",
     collaborators: "Darion Hing Productions",
