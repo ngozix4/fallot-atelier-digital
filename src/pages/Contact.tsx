@@ -5,10 +5,18 @@ import ScrollReveal from "@/components/ScrollReveal";
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
+  const WHATSAPP_NUMBER = "27691985031";
+  const INSTAGRAM_HANDLE = "fallot_correctionstudio";
+  const INSTAGRAM_URL = `https://instagram.com/${INSTAGRAM_HANDLE}`;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Future: connect to backend
-    alert("Thank you for your inquiry. We will be in touch.");
+    const text =
+      `New inquiry from Fallot Correction Studio website%0A%0A` +
+      `Name: ${encodeURIComponent(form.name)}%0A` +
+      `Email: ${encodeURIComponent(form.email)}%0A%0A` +
+      `Message:%0A${encodeURIComponent(form.message)}`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -75,7 +83,7 @@ const Contact = () => {
               <p className="text-editorial text-muted-foreground">studio@fallotstudio.com</p>
               <div className="flex items-center justify-center gap-8">
                 <a
-                  href="https://instagram.com"
+                  href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-caption text-muted-foreground hover:text-accent transition-colors"
@@ -83,24 +91,36 @@ const Contact = () => {
                   Instagram
                 </a>
                 <a
-                  href="https://tiktok.com"
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-caption text-muted-foreground hover:text-accent transition-colors"
                 >
-                  TikTok
+                  WhatsApp
                 </a>
               </div>
             </div>
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="text-center mt-12">
+            <div className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="mailto:studio@fallotstudio.com?subject=Consultation%20Booking"
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                  "Hello Fallot Correction Studio, I would like to book a consultation."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block py-4 px-10 border border-accent text-accent text-caption tracking-[0.2em] hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
               >
-                Book a Consultation
+                Book via WhatsApp
+              </a>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block py-4 px-10 border border-border text-foreground text-caption tracking-[0.2em] hover:border-accent hover:text-accent transition-colors duration-300"
+              >
+                Message on Instagram
               </a>
             </div>
           </ScrollReveal>

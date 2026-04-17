@@ -36,11 +36,11 @@ const Footer = () => (
         <div>
           <p className="text-caption text-muted-foreground mb-4">Connect</p>
           <div className="flex flex-col gap-3">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
+            <a href="https://instagram.com/fallot_correctionstudio" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
               Instagram
             </a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
-              TikTok
+            <a href="https://wa.me/27691985031" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
+              WhatsApp
             </a>
             <a href="mailto:studio@fallotstudio.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
               studio@fallotstudio.com
