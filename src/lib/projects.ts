@@ -1,3 +1,8 @@
+import isdwadloRedTrack from "@/assets/Isdwadlo-Fashion-Show-Red-TrackSuit.jpeg";
+import isdwadloRedPants from "@/assets/Isdwadlo-Red-Pants-Yellow-Jacket.jpeg";
+import sewAfricaAward from "@/assets/SewAfrica-Getting-An-Award.jpeg";
+import sewAfricaCert from "@/assets/SewAfrica-Certificate-Of-Completion.jpeg";
+
 export interface Project {
   slug: string;
   title: string;
@@ -17,11 +22,8 @@ export const projects: Project[] = [
   role: "Co-Founder & Designer",
   collaborators: "Isdwadlo Team",
   description: "A Johannesburg-based streetwear collective that disrupted the scene...",
-  image: "/assets/hero-fabric.jpg",
-  gallery: [
-    "/assets/Isdwadlo-Fashion-Show-Red-TrackSuit.jpeg",
-    "/assets/Isdwadlo-Red-Pants-Yellow-Jacket.jpeg"
-  ],
+  image: isdwadloRedTrack,
+  gallery: [isdwadloRedTrack, isdwadloRedPants],
   },
   {
   slug: "sew-africa",
@@ -30,11 +32,8 @@ export const projects: Project[] = [
   role: "Designer & Award Recipient",
   collaborators: "Sew Africa",
   description: "Awarded Student of the Year twice consecutively...",
-  image: "../assets/SewAfrica-Getting-An-Award.jpeg",
-  gallery: [
-    "../assets/SewAfrica-Getting-An-Award.jpeg",
-    "../assets/SewAfrica-Certificate-Of-Completion.jpeg"
-  ],
+  image: sewAfricaAward,
+  gallery: [sewAfricaAward, sewAfricaCert],
 },
   {
     slug: "xvii-victorian",
