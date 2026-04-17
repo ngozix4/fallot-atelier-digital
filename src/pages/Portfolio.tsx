@@ -19,9 +19,17 @@ const Portfolio = () => (
             <ScrollReveal key={project.slug} delay={i * 0.08}>
               <Link to={`/portfolio/${project.slug}`} className="group block">
                 <div className="aspect-[4/5] bg-secondary mb-4 overflow-hidden border gold-border gold-border-hover gold-glow-hover transition-all duration-500">
-                  <div className="w-full h-full bg-muted flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
-                    <p className="text-caption text-muted-foreground">{project.title}</p>
-                  </div>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-muted flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
+                      <p className="text-caption text-muted-foreground">{project.title}</p>
+                    </div>
+                  )}
                 </div>
                 <div className="flex items-baseline justify-between">
                   <h3 className="font-heading text-xl text-foreground group-hover:text-accent transition-colors duration-300">{project.title}</h3>
