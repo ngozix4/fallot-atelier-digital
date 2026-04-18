@@ -1,7 +1,13 @@
 import isdwadloRedTrack from "@/assets/Isdwadlo-Fashion-Show-Red-TrackSuit.jpeg";
 import isdwadloRedPants from "@/assets/Isdwadlo-Red-Pants-Yellow-Jacket.jpeg";
+import isdwadloMen1 from "@/assets/isdwadlo_men_tracksuit1.jpg";
+import isdwadloMen2 from "@/assets/isdwadlo_men_tracksuit2.jpg";
+import isdwadloMen3 from "@/assets/isdwadlo_men_tracksuit3.jpg";
+import isdwadloMen4 from "@/assets/isdwadlo_men_tracksuit4.jpg";
+import isdwadloMen5 from "@/assets/isdwadlo_men_tracksuit5.jpg";
 import sewAfricaAward from "@/assets/SewAfrica-Getting-An-Award.jpeg";
 import sewAfricaCert from "@/assets/SewAfrica-Certificate-Of-Completion.jpeg";
+import sewAfricaChineseHero from "@/assets/sewafrica-chinese-dress.png";
 import sewAfricaChinese1 from "@/assets/sewafrica-fahionshow-chinese-dress1.jpg";
 import sewAfricaChinese2 from "@/assets/sewafrica-fashionshow-chinese-dress2.jpg";
 import sewAfricaCert2 from "@/assets/sewafrica-fashion-getting-a-certificate.jpg";
@@ -57,7 +63,7 @@ export const projects: Project[] = [
     narrativeTitle: "A Study in",
     narrativeHighlight: "Rebellion",
     image: isdwadloRedTrack,
-    gallery: [isdwadloRedTrack, isdwadloRedPants],
+    gallery: [isdwadloRedTrack, isdwadloRedPants, isdwadloMen1, isdwadloMen2, isdwadloMen3, isdwadloMen4, isdwadloMen5],
   },
   {
     slug: "sew-africa",
@@ -68,8 +74,9 @@ export const projects: Project[] = [
     description: "Two consecutive years as Student of the Year — not as accolade, but as confirmation. This was where discipline took root, where the needle became an extension of thought, and where the foundations of every garment that followed were quietly laid.",
     narrativeTitle: "A Study in",
     narrativeHighlight: "Foundation",
-    image: sewAfricaAward,
+    image: sewAfricaChineseHero,
     gallery: [
+      sewAfricaChineseHero,
       sewAfricaAward,
       sewAfricaAward2,
       sewAfricaCert,
