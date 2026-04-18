@@ -12,10 +12,15 @@ const About = () => (
           <h1 className="heading-display text-foreground mb-16">The Journey</h1>
         </ScrollReveal>
 
-        {/* Portrait placeholder */}
+        {/* Portrait */}
         <ScrollReveal delay={0.2}>
-          <div className="aspect-[3/4] max-w-sm mx-auto bg-secondary mb-16 flex items-center justify-center border gold-border gold-glow">
-            <p className="text-caption text-muted-foreground">Portrait</p>
+          <div className="aspect-[3/4] max-w-sm mx-auto bg-secondary mb-16 overflow-hidden border gold-border gold-glow">
+            <img
+              src={portrait}
+              alt="Portrait of the designer"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
         </ScrollReveal>
 
