@@ -112,24 +112,32 @@ const Index = () => {
             <h2 className="heading-section text-foreground mb-16 text-center">Portfolio</h2>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.slice(0, 6).map((project, i) => (
-              <ScrollReveal key={project.slug} delay={i * 0.1}>
-                <Link
-                  to={`/portfolio/${project.slug}`}
-                  className="group block"
-                >
-                  <div className="aspect-[4/5] bg-secondary mb-4 overflow-hidden border gold-border gold-border-hover gold-glow-hover transition-all duration-500">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {projects.map((project, i) => (
+            <ScrollReveal key={project.slug} delay={i * 0.08}>
+              <Link to={`/portfolio/${project.slug}`} className="group block">
+                <div className="aspect-[4/5] bg-secondary mb-4 overflow-hidden border gold-border gold-border-hover gold-glow-hover transition-all duration-500">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  ) : (
                     <div className="w-full h-full bg-muted flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
                       <p className="text-caption text-muted-foreground">{project.title}</p>
                     </div>
-                  </div>
-                  <h3 className="font-heading text-xl text-foreground mb-1 group-hover:text-accent transition-colors duration-300">{project.title}</h3>
+                  )}
+                </div>
+                <div className="flex items-baseline justify-between">
+                  <h3 className="font-heading text-xl text-foreground group-hover:text-accent transition-colors duration-300">{project.title}</h3>
                   <p className="text-caption text-muted-foreground">{project.year}</p>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
+                </div>
+                <p className="text-sm text-muted-foreground mt-1 font-body">{project.role}</p>
+              </Link>
+            </ScrollReveal>
+          ))}
+        </div>
 
           <ScrollReveal>
             <div className="text-center mt-16">
