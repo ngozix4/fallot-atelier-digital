@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
+import portrait from "@/assets/potrait.png";
 
 const About = () => (
   <Layout>
