@@ -38,8 +38,12 @@ export interface Project {
   role: string;
   collaborators: string;
   description: string;
+  narrativeTitle?: string;
+  narrativeHighlight?: string;
   image?: string;
   gallery?: string[];
+  instagramHandle?: string;
+  instagramUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -49,7 +53,9 @@ export const projects: Project[] = [
     year: "2021",
     role: "Co-Founder & Designer",
     collaborators: "Isdwadlo Team",
-    description: "A Johannesburg-based streetwear collective that disrupted the scene...",
+    description: "A Johannesburg-based streetwear collective born from defiance and brotherhood. We took the language of the street and rewrote it with intention — proving that luxury could speak in a township accent without ever losing its weight.",
+    narrativeTitle: "A Study in",
+    narrativeHighlight: "Rebellion",
     image: isdwadloRedTrack,
     gallery: [isdwadloRedTrack, isdwadloRedPants],
   },
@@ -59,7 +65,9 @@ export const projects: Project[] = [
     year: "2019",
     role: "Designer & Award Recipient",
     collaborators: "Sew Africa",
-    description: "Awarded Student of the Year twice consecutively...",
+    description: "Two consecutive years as Student of the Year — not as accolade, but as confirmation. This was where discipline took root, where the needle became an extension of thought, and where the foundations of every garment that followed were quietly laid.",
+    narrativeTitle: "A Study in",
+    narrativeHighlight: "Foundation",
     image: sewAfricaAward,
     gallery: [
       sewAfricaAward,
@@ -77,7 +85,11 @@ export const projects: Project[] = [
     year: "2021",
     role: "Apprentice & Collaborator",
     collaborators: "XVII Victorian, Durban",
-    description: "Mastering the delicate architecture of wedding gowns and formalwear alongside a master of the craft. Every stitch a lesson in patience, structure, and the art of making fabric breathe.",
+    description: "An apprenticeship in the architecture of bridal couture. Beneath the hands of a master, I learned that a wedding gown is not sewn — it is engineered. Patience replaced urgency; structure became a love language.",
+    narrativeTitle: "A Study in",
+    narrativeHighlight: "Devotion",
+    instagramHandle: "@xviii_victorian",
+    instagramUrl: "https://www.instagram.com/xviii_victorian/",
   },
 
   {
@@ -86,7 +98,11 @@ export const projects: Project[] = [
     year: "2024",
     role: "Collaborating Designer",
     collaborators: "Tokelo Laka",
-    description: "A creative dialogue between two distinct design voices, resulting in pieces that balance raw expression with structural refinement. Fashion as conversation.",
+    description: "Two voices, one cloth. A collaboration that proved restraint and expression are not opposites — they are partners. Together we shaped pieces that spoke softly but carried the room, garments built on mutual respect for the craft.",
+    narrativeTitle: "A Study in",
+    narrativeHighlight: "Dialogue",
+    instagramHandle: "@tokelo_laka",
+    instagramUrl: "https://www.instagram.com/tokelo_laka/",
   },
   {
     slug: "netflix-the-poligamy",
@@ -94,7 +110,9 @@ export const projects: Project[] = [
     year: "2025",
     role: "Costume Designer",
     collaborators: "Darion Hing Productions",
-    description: "Bringing technical excellence to the costume department for film. Every garment tells a story within a story — designed to inhabit character, not merely dress it.",
+    description: "Costume as character. Every seam carried a backstory, every silhouette a secret. Designing for the screen taught me that a garment can speak before an actor does — and that true craftsmanship knows when to disappear into the role.",
+    narrativeTitle: "A Study in",
+    narrativeHighlight: "Character",
   },
   {
     slug: "fallot-correction-studio-launch",
@@ -102,7 +120,9 @@ export const projects: Project[] = [
     year: "2025",
     role: "Founder & Creative Director",
     collaborators: "Fallot Correction Studio",
-    description: "The culmination of a journey. A demi-couture and bespoke atelier rooted in structure, faith, gratitude, and strength. Not fashion for attention — fashion for presence.",
+    description: "The culmination of a journey — and the beginning of another. A demi-couture and bespoke atelier rooted in structure, faith, gratitude, and strength. Not fashion for attention. Fashion for presence. This is where every lesson, every stitch, every silent hour finally takes form.",
+    narrativeTitle: "A Study in",
+    narrativeHighlight: "Presence",
     image: fallotStudioDress,
     gallery: [
       fallotStudioDress,

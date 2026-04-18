@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Instagram } from "lucide-react";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import { projects } from "@/lib/projects";
@@ -104,7 +104,8 @@ const ProjectDetail = () => {
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <h2 className="heading-section text-foreground italic text-center mb-12">
-                A Study in <span className="text-gold-gradient">Intention</span>
+                {project.narrativeTitle ?? "A Study in"}{" "}
+                <span className="text-gold-gradient">{project.narrativeHighlight ?? "Intention"}</span>
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
@@ -115,6 +116,34 @@ const ProjectDetail = () => {
                 {project.description}
               </p>
             </ScrollReveal>
+
+            {project.instagramUrl && (
+              <ScrollReveal delay={0.25}>
+                <div className="mt-12 flex flex-col items-center">
+                  <p className="text-caption text-muted-foreground mb-4">
+                    — VISUAL ARCHIVE LIVES ON INSTAGRAM —
+                  </p>
+                  <a
+                    href={project.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-3 px-8 py-4 border gold-border gold-border-hover gold-glow-hover transition-all duration-500"
+                  >
+                    <Instagram
+                      className="w-5 h-5 text-accent transition-transform duration-500 group-hover:scale-110"
+                      strokeWidth={1.2}
+                    />
+                    <span className="font-heading italic text-lg text-foreground group-hover:text-accent transition-colors duration-500">
+                      {project.instagramHandle}
+                    </span>
+                    <ArrowUpRight
+                      className="w-4 h-4 text-accent transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+                      strokeWidth={1.2}
+                    />
+                  </a>
+                </div>
+              </ScrollReveal>
+            )}
           </div>
         </div>
       </section>
