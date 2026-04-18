@@ -63,7 +63,7 @@ export const projects: Project[] = [
     narrativeTitle: "A Study in",
     narrativeHighlight: "Rebellion",
     image: isdwadloRedTrack,
-    gallery: [isdwadloRedTrack, isdwadloRedPants],
+    gallery: [isdwadloRedTrack, isdwadloRedPants, isdwadloMen1, isdwadloMen2, isdwadloMen3, isdwadloMen4, isdwadloMen5],
   },
   {
     slug: "sew-africa",
@@ -74,8 +74,9 @@ export const projects: Project[] = [
     description: "Two consecutive years as Student of the Year — not as accolade, but as confirmation. This was where discipline took root, where the needle became an extension of thought, and where the foundations of every garment that followed were quietly laid.",
     narrativeTitle: "A Study in",
     narrativeHighlight: "Foundation",
-    image: sewAfricaAward,
+    image: sewAfricaChineseHero,
     gallery: [
+      sewAfricaChineseHero,
       sewAfricaAward,
       sewAfricaAward2,
       sewAfricaCert,
