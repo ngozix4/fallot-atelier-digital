@@ -102,50 +102,99 @@ const Index = () => {
         </section>
       </ScrollReveal>
 
-      {/* Featured Projects */}
-      <section className="py-24 md:py-36">
-        <div className="container mx-auto px-6 md:px-12">
+      {/* Featured Projects — Editorial Showcase */}
+      <section className="py-24 md:py-36 relative overflow-hidden">
+        {/* Subtle gold backdrop accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container mx-auto px-6 md:px-12 relative z-10">
           <ScrollReveal>
-            <p className="text-caption text-accent mb-6 text-center">SELECTED WORKS</p>
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <span className="h-px w-12 bg-accent/40" />
+              <p className="text-caption text-accent">SELECTED WORKS</p>
+              <span className="h-px w-12 bg-accent/40" />
+            </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="heading-section text-foreground mb-16 text-center">Portfolio</h2>
+            <h2 className="heading-section text-foreground mb-4 text-center italic">
+              The <span className="text-gold-gradient">Atelier</span> Archive
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <div className="heartbeat-divider" />
           </ScrollReveal>
 
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {projects.map((project, i) => (
-            <ScrollReveal key={project.slug} delay={i * 0.08}>
-              <Link to={`/portfolio/${project.slug}`} className="group block">
-                <div className="aspect-[4/5] bg-secondary mb-4 overflow-hidden border gold-border gold-border-hover gold-glow-hover transition-all duration-500">
-                  {project.image ? (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-muted flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
-                      <p className="text-caption text-muted-foreground">{project.title}</p>
-                    </div>
-                  )}
-                </div>
-                <div className="flex items-baseline justify-between">
-                  <h3 className="font-heading text-xl text-foreground group-hover:text-accent transition-colors duration-300">{project.title}</h3>
-                  <p className="text-caption text-muted-foreground">{project.year}</p>
-                </div>
-                <p className="text-sm text-muted-foreground mt-1 font-body">{project.role}</p>
-              </Link>
-            </ScrollReveal>
-          ))}
-        </div>
+          <div className="grid grid-cols-12 gap-4 md:gap-6 max-w-6xl mx-auto mt-16">
+            {projects.slice(0, 4).map((project, i) => {
+              // Asymmetric editorial layout: tall, short, short, tall
+              const isTall = i === 0 || i === 3;
+              const colSpan = isTall ? "md:col-span-7" : "md:col-span-5";
+              const aspect = isTall ? "aspect-[4/5]" : "aspect-[4/5] md:aspect-[3/4]";
+              const indexLabel = String(i + 1).padStart(2, "0");
+
+              return (
+                <ScrollReveal key={project.slug} delay={i * 0.08}>
+                  <div className={`col-span-12 ${colSpan}`}>
+                    <Link to={`/portfolio/${project.slug}`} className="group block relative">
+                      {/* Index watermark */}
+                      <div className="absolute -top-4 -left-2 z-20 pointer-events-none">
+                        <span className="font-heading italic text-5xl md:text-6xl text-accent/30 leading-none">
+                          {indexLabel}
+                        </span>
+                      </div>
+
+                      <div className={`${aspect} bg-secondary overflow-hidden border gold-border gold-border-hover gold-glow-hover transition-all duration-700 relative`}>
+                        {project.image ? (
+                          <>
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              loading="lazy"
+                              className="w-full h-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
+                            <div className="absolute inset-x-0 bottom-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-700">
+                              <div className="flex items-end justify-between gap-4">
+                                <div>
+                                  <p className="text-caption text-accent mb-2">{project.year}</p>
+                                  <h3 className="font-heading italic text-xl md:text-2xl text-foreground group-hover:text-accent transition-colors duration-500">
+                                    {project.title}
+                                  </h3>
+                                  <p className="text-caption text-muted-foreground mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                                    {project.role}
+                                  </p>
+                                </div>
+                                <ArrowUpRight
+                                  className="w-5 h-5 text-accent flex-shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+                                  strokeWidth={1.2}
+                                />
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="w-full h-full bg-muted flex items-center justify-center">
+                            <p className="text-caption text-muted-foreground">{project.title}</p>
+                          </div>
+                        )}
+                      </div>
+                    </Link>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
 
           <ScrollReveal>
-            <div className="text-center mt-16">
+            <div className="text-center mt-20">
               <Link
                 to="/portfolio"
-                className="inline-block text-caption text-accent border-b border-accent pb-1 hover:text-foreground hover:border-foreground transition-colors duration-300"
+                className="group inline-flex items-center gap-3 text-caption text-accent border-b border-accent pb-1 hover:text-foreground hover:border-foreground transition-colors duration-300"
               >
-                View All Projects
+                Enter the Full Archive
+                <ArrowUpRight
+                  className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  strokeWidth={1.2}
+                />
               </Link>
             </div>
           </ScrollReveal>
