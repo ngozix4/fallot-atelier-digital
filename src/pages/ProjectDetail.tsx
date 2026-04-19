@@ -1,5 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Instagram } from "lucide-react";
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import { projects } from "@/lib/projects";
