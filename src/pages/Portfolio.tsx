@@ -46,24 +46,24 @@ const Portfolio = () => (
                   className="group block relative"
                 >
                   <div
-                    className={`grid grid-cols-12 gap-4 md:gap-8 items-center ${
-                      isReversed ? "md:[direction:rtl]" : ""
+                    className={`grid grid-cols-12 gap-3 sm:gap-6 md:gap-8 items-center ${
+                      isReversed ? "[direction:rtl]" : ""
                     }`}
                   >
                     {/* Image */}
-                    <div className="col-span-12 md:col-span-7 [direction:ltr]">
+                    <div className="col-span-7 [direction:ltr]">
                       <div className="relative overflow-hidden">
                         {/* Index number watermark */}
                         <div
-                          className={`absolute z-20 top-4 ${
-                            isReversed ? "right-4" : "left-4"
-                          } font-heading text-5xl md:text-7xl italic text-background/80 mix-blend-difference pointer-events-none`}
+                          className={`absolute z-20 top-3 sm:top-4 ${
+                            isReversed ? "right-3 sm:right-4" : "left-3 sm:left-4"
+                          } font-heading text-4xl sm:text-5xl md:text-7xl italic text-background/80 mix-blend-difference pointer-events-none`}
                         >
                           {indexLabel}
                         </div>
 
                         {/* Image frame */}
-                        <div className="aspect-[4/5] md:aspect-[3/4] bg-secondary overflow-hidden border gold-border gold-border-hover transition-all duration-700 relative">
+                        <div className="aspect-[3/4] bg-secondary overflow-hidden border gold-border gold-border-hover transition-all duration-700 relative">
                           {project.image ? (
                             <>
                               <img
@@ -73,10 +73,8 @@ const Portfolio = () => (
                                 decoding="async"
                                 className="w-full h-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-105"
                               />
-                              {/* Gold tint overlay on hover */}
                               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                              {/* Reveal label */}
-                              <div className="absolute inset-x-0 bottom-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-between">
+                              <div className="absolute inset-x-0 bottom-0 p-3 sm:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-between">
                                 <span className="text-caption text-accent">View Project</span>
                                 <ArrowUpRight className="w-5 h-5 text-accent" strokeWidth={1.2} />
                               </div>
@@ -88,45 +86,47 @@ const Portfolio = () => (
                           )}
                         </div>
 
-                        {/* Subtle outer glow on hover */}
                         <div className="absolute -inset-px pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 gold-glow" />
                       </div>
                     </div>
 
                     {/* Text Block */}
-                    <div className="col-span-12 md:col-span-5 [direction:ltr]">
+                    <div className="col-span-5 [direction:ltr]">
                       <div
-                        className={`space-y-4 md:space-y-5 ${
-                          isReversed ? "md:pr-4" : "md:pl-4"
+                        className={`space-y-2 sm:space-y-4 md:space-y-5 ${
+                          isReversed ? "pr-1 sm:pr-4" : "pl-1 sm:pl-4"
                         }`}
                       >
-                        <div className="flex items-center gap-4">
-                          <span className="font-heading italic text-accent text-lg">
+                        <div className="flex items-center gap-2 sm:gap-4">
+                          <span className="font-heading italic text-accent text-base sm:text-lg">
                             {indexLabel}
                           </span>
-                          <span className="h-px flex-1 bg-accent/30 max-w-[60px]" />
-                          <span className="text-caption text-muted-foreground">{project.year}</span>
+                          <span className="h-px flex-1 bg-accent/30 max-w-[40px] sm:max-w-[60px]" />
+                          <span className="text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] text-muted-foreground font-medium">
+                            {project.year}
+                          </span>
                         </div>
 
-                        <h2 className="heading-section text-foreground italic group-hover:text-accent transition-colors duration-500">
+                        <h2 className="font-heading italic text-xl sm:text-3xl md:text-5xl font-light tracking-wide leading-[1.15] text-foreground group-hover:text-accent transition-colors duration-500">
                           {project.title}
                         </h2>
 
-                        <p className="text-caption text-muted-foreground">
+                        <p className="text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] text-muted-foreground font-medium">
                           {project.role}
                         </p>
 
-                        <p className="text-editorial text-muted-foreground line-clamp-3 pt-2">
+                        <p className="text-xs sm:text-base md:text-lg leading-relaxed font-light tracking-wide text-muted-foreground line-clamp-2 sm:line-clamp-3 pt-1 sm:pt-2">
                           {project.description}
                         </p>
 
-                        <div className="pt-4 inline-flex items-center gap-2 text-caption text-foreground group-hover:text-accent transition-colors duration-500">
+                        <div className="pt-2 sm:pt-4 inline-flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] font-medium text-foreground group-hover:text-accent transition-colors duration-500">
                           <span className="relative">
-                            Explore the piece
+                            <span className="hidden sm:inline">Explore the piece</span>
+                            <span className="sm:hidden">Explore</span>
                             <span className="absolute left-0 -bottom-1 h-px w-0 bg-accent group-hover:w-full transition-all duration-500" />
                           </span>
                           <ArrowUpRight
-                            className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+                            className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
                             strokeWidth={1.2}
                           />
                         </div>
