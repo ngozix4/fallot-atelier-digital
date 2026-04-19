@@ -91,12 +91,12 @@
 
 @layer components {
   .heading-display {
-    @apply text-4xl md:text-6xl lg:text-7xl font-light tracking-wide leading-tight;
+    @apply text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-wide leading-[1.1];
     font-family: var(--font-heading);
   }
 
   .heading-section {
-    @apply text-3xl md:text-5xl font-light tracking-wide;
+    @apply text-[1.75rem] sm:text-4xl md:text-5xl font-light tracking-wide leading-[1.15];
     font-family: var(--font-heading);
   }
 
@@ -214,9 +214,19 @@
   }
 }
 
-/* Smooth scrolling */
+/* Smooth in-page anchor scrolling, but route changes use instant jump via ScrollToTop */
 html {
   scroll-behavior: smooth;
+}
+
+/* Prevent horizontal overflow on small screens */
+html, body {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Custom scrollbar */
