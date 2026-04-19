@@ -3,6 +3,13 @@ import { ArrowLeft, ArrowUpRight, Instagram } from "lucide-react";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import { projects } from "@/lib/projects";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const ProjectDetail = () => {
   const { slug } = useParams();
