@@ -1,5 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Instagram } from "lucide-react";
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import { projects } from "@/lib/projects";
@@ -15,6 +17,9 @@ const ProjectDetail = () => {
   const { slug } = useParams();
   const projectIndex = projects.findIndex((p) => p.slug === slug);
   const project = projects[projectIndex];
+  const autoplayRef = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true, stopOnFocusIn: true })
+  );
 
   if (!project) {
     return (
@@ -173,7 +178,11 @@ const ProjectDetail = () => {
               <ScrollReveal delay={0.1}>
                 <Carousel
                   opts={{ align: "center", loop: true }}
+                  plugins={[autoplayRef.current]}
                   className="relative"
+                  onMouseEnter={() => autoplayRef.current.stop()}
+                  onMouseLeave={() => autoplayRef.current.play()}
+                  onTouchStart={() => autoplayRef.current.stop()}
                 >
                   <CarouselContent className="-ml-4 md:-ml-8 py-12 md:py-20">
                     {project.gallery.map((img, idx) => {
