@@ -17,6 +17,9 @@ const ProjectDetail = () => {
   const { slug } = useParams();
   const projectIndex = projects.findIndex((p) => p.slug === slug);
   const project = projects[projectIndex];
+  const autoplayRef = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true, stopOnFocusIn: true })
+  );
 
   if (!project) {
     return (
