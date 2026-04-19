@@ -11,13 +11,15 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100svh] min-h-[560px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Luxury couture fabric in motion"
             className="w-full h-full object-cover"
             loading="eager"
+            decoding="async"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-charcoal/60" />
         </div>
@@ -43,7 +45,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="text-editorial text-cream-dark max-w-lg mx-auto italic font-heading text-xl md:text-2xl"
+            className="text-editorial text-cream-dark max-w-lg mx-auto italic font-heading text-base sm:text-xl md:text-2xl"
           >
             Tailored to Overcome — Bespoke Fashion for the Confident Individual.
           </motion.p>
@@ -60,7 +62,7 @@ const Index = () => {
       </section>
 
       {/* Introduction */}
-      <section className="py-24 md:py-36">
+      <section className="py-16 sm:py-24 md:py-36">
         <div className="container mx-auto px-6 md:px-12 max-w-3xl text-center">
           <ScrollReveal>
             <p className="text-caption text-accent mb-6">THE ATELIER</p>
@@ -97,13 +99,14 @@ const Index = () => {
               alt="Inside the Fallot Correction Studio atelier"
               className="w-full aspect-[3/2] object-cover"
               loading="lazy"
+              decoding="async"
             />
           </div>
         </section>
       </ScrollReveal>
 
       {/* Featured Projects — Editorial Showcase */}
-      <section className="py-24 md:py-36 relative overflow-hidden">
+      <section className="py-16 sm:py-24 md:py-36 relative overflow-hidden">
         {/* Subtle gold backdrop accent */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -150,6 +153,7 @@ const Index = () => {
                               src={project.image}
                               alt={project.title}
                               loading="lazy"
+                              decoding="async"
                               className="w-full h-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
