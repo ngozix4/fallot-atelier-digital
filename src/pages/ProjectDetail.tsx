@@ -3,6 +3,13 @@ import { ArrowLeft, ArrowUpRight, Instagram } from "lucide-react";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import { projects } from "@/lib/projects";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const ProjectDetail = () => {
   const { slug } = useParams();
@@ -150,62 +157,78 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Editorial Gallery */}
+      {/* Editorial Carousel — Mind-Map Flow */}
       {project.gallery && project.gallery.length > 0 && (
-        <section className="pb-16 sm:pb-24 md:pb-36">
-          <div className="container mx-auto px-6 md:px-12">
-            <div className="max-w-6xl mx-auto">
+        <section className="pb-16 sm:pb-24 md:pb-36 overflow-hidden">
+          <div className="container mx-auto px-4 sm:px-6 md:px-12">
+            <div className="max-w-7xl mx-auto">
               <ScrollReveal>
-                <div className="flex items-center justify-center gap-4 mb-16">
+                <div className="flex items-center justify-center gap-4 mb-12 md:mb-16">
                   <span className="h-px w-12 bg-accent/40" />
                   <p className="text-caption text-accent">THE COLLECTION</p>
                   <span className="h-px w-12 bg-accent/40" />
                 </div>
               </ScrollReveal>
 
-              <div className="grid grid-cols-12 gap-6 sm:gap-8 md:gap-10">
-                {project.gallery.map((img, idx) => {
-                  // Editorial asymmetric pattern: large, small, small, large, small, small...
-                  const pattern = idx % 6;
-                  // On mobile every frame takes full width so they read large.
-                  // On md+ we keep the asymmetric editorial layout.
-                  const spanClass =
-                    pattern === 0 || pattern === 3
-                      ? "col-span-12 md:col-span-8"
-                      : "col-span-12 md:col-span-4";
-                  const aspectClass =
-                    pattern === 0 || pattern === 3
-                      ? "aspect-[4/5] md:aspect-[16/10]"
-                      : "aspect-[4/5] md:aspect-[3/4]";
-                  const floatDelay = `float-delay-${(idx % 5) + 1}`;
+              <ScrollReveal delay={0.1}>
+                <Carousel
+                  opts={{ align: "center", loop: true }}
+                  className="relative"
+                >
+                  <CarouselContent className="-ml-4 md:-ml-8 py-12 md:py-20">
+                    {project.gallery.map((img, idx) => {
+                      // Mind-map drift: left-up, down-right, up-right, down-left...
+                      const driftPattern = [
+                        "md:-translate-y-8 md:-translate-x-2",
+                        "md:translate-y-10 md:translate-x-4",
+                        "md:-translate-y-12 md:translate-x-2",
+                        "md:translate-y-8 md:-translate-x-4",
+                        "md:-translate-y-6 md:translate-x-6",
+                        "md:translate-y-12 md:-translate-x-2",
+                      ];
+                      const drift = driftPattern[idx % driftPattern.length];
+                      const rotate = idx % 2 === 0 ? "md:rotate-[-1.2deg]" : "md:rotate-[1.2deg]";
+                      const floatDelay = `float-delay-${(idx % 5) + 1}`;
 
-                  return (
-                    <ScrollReveal key={idx} delay={Math.min(idx * 0.05, 0.4)}>
-                      <div
-                        className={`${spanClass} ${floatDelay} float-frame group relative overflow-hidden border gold-border gold-border-hover transition-all duration-700`}
-                      >
-                        <div className={`${aspectClass} bg-secondary overflow-hidden`}>
-                          <img
-                            src={img}
-                            alt={`${project.title} — frame ${idx + 1}`}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover transition-all duration-[1500ms] ease-out group-hover:scale-110"
-                          />
-                          {/* Gold tint overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                          {/* Frame number — always visible on mobile, hover on desktop */}
-                          <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700">
-                            <span className="font-heading italic text-accent text-sm bg-background/40 backdrop-blur-sm px-2 py-1 md:bg-transparent md:backdrop-blur-none md:px-0 md:py-0">
-                              Frame {String(idx + 1).padStart(2, "0")} / {String(project.gallery!.length).padStart(2, "0")}
-                            </span>
+                      return (
+                        <CarouselItem
+                          key={idx}
+                          className="pl-4 md:pl-8 basis-[85%] sm:basis-[70%] md:basis-[55%] lg:basis-[45%]"
+                        >
+                          <div
+                            className={`${drift} ${rotate} ${floatDelay} float-frame group relative overflow-hidden border gold-border gold-border-hover transition-all duration-700`}
+                          >
+                            <div className="aspect-[3/4] bg-secondary overflow-hidden">
+                              <img
+                                src={img}
+                                alt={`${project.title} — frame ${idx + 1}`}
+                                loading={idx < 2 ? "eager" : "lazy"}
+                                decoding="async"
+                                className="w-full h-full object-cover transition-all duration-[1500ms] ease-out group-hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                                <span className="font-heading italic text-accent text-sm md:text-base bg-background/50 backdrop-blur-sm px-3 py-1.5">
+                                  Frame {String(idx + 1).padStart(2, "0")} / {String(project.gallery!.length).padStart(2, "0")}
+                                </span>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    </ScrollReveal>
-                  );
-                })}
-              </div>
+                        </CarouselItem>
+                      );
+                    })}
+                  </CarouselContent>
+
+                  <CarouselPrevious className="left-2 md:left-4 h-12 w-12 border gold-border bg-background/60 backdrop-blur-md text-accent hover:bg-accent hover:text-background transition-all duration-500" />
+                  <CarouselNext className="right-2 md:right-4 h-12 w-12 border gold-border bg-background/60 backdrop-blur-md text-accent hover:bg-accent hover:text-background transition-all duration-500" />
+                </Carousel>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.2}>
+                <p className="text-caption text-muted-foreground text-center mt-8 italic">
+                  — drift through the collection —
+                </p>
+              </ScrollReveal>
             </div>
           </div>
         </section>
