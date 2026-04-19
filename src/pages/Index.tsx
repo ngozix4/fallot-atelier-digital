@@ -11,13 +11,15 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100svh] min-h-[560px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Luxury couture fabric in motion"
             className="w-full h-full object-cover"
             loading="eager"
+            decoding="async"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-charcoal/60" />
         </div>
@@ -43,7 +45,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="text-editorial text-cream-dark max-w-lg mx-auto italic font-heading text-xl md:text-2xl"
+            className="text-editorial text-cream-dark max-w-lg mx-auto italic font-heading text-base sm:text-xl md:text-2xl"
           >
             Tailored to Overcome — Bespoke Fashion for the Confident Individual.
           </motion.p>
