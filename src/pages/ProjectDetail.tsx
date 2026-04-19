@@ -163,22 +163,27 @@ const ProjectDetail = () => {
                 </div>
               </ScrollReveal>
 
-              <div className="grid grid-cols-12 gap-4 md:gap-6">
+              <div className="grid grid-cols-12 gap-6 sm:gap-8 md:gap-10">
                 {project.gallery.map((img, idx) => {
                   // Editorial asymmetric pattern: large, small, small, large, small, small...
                   const pattern = idx % 6;
+                  // On mobile every frame takes full width so they read large.
+                  // On md+ we keep the asymmetric editorial layout.
                   const spanClass =
                     pattern === 0 || pattern === 3
                       ? "col-span-12 md:col-span-8"
-                      : "col-span-6 md:col-span-4";
+                      : "col-span-12 md:col-span-4";
                   const aspectClass =
                     pattern === 0 || pattern === 3
-                      ? "aspect-[16/10]"
-                      : "aspect-[3/4]";
+                      ? "aspect-[4/5] md:aspect-[16/10]"
+                      : "aspect-[4/5] md:aspect-[3/4]";
+                  const floatDelay = `float-delay-${(idx % 5) + 1}`;
 
                   return (
                     <ScrollReveal key={idx} delay={Math.min(idx * 0.05, 0.4)}>
-                      <div className={`${spanClass} group relative overflow-hidden border gold-border gold-border-hover transition-all duration-700`}>
+                      <div
+                        className={`${spanClass} ${floatDelay} float-frame group relative overflow-hidden border gold-border gold-border-hover transition-all duration-700`}
+                      >
                         <div className={`${aspectClass} bg-secondary overflow-hidden`}>
                           <img
                             src={img}
@@ -189,9 +194,9 @@ const ProjectDetail = () => {
                           />
                           {/* Gold tint overlay */}
                           <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                          {/* Frame number */}
-                          <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                            <span className="font-heading italic text-accent text-sm">
+                          {/* Frame number — always visible on mobile, hover on desktop */}
+                          <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700">
+                            <span className="font-heading italic text-accent text-sm bg-background/40 backdrop-blur-sm px-2 py-1 md:bg-transparent md:backdrop-blur-none md:px-0 md:py-0">
                               Frame {String(idx + 1).padStart(2, "0")} / {String(project.gallery!.length).padStart(2, "0")}
                             </span>
                           </div>
