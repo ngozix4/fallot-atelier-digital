@@ -7,7 +7,7 @@ import { projects } from "@/lib/projects";
 const Portfolio = () => (
   <Layout>
     {/* Hero */}
-    <section className="pt-32 pb-16 md:pt-44 md:pb-24">
+    <section className="pt-28 pb-12 sm:pt-32 sm:pb-16 md:pt-44 md:pb-24">
       <div className="container mx-auto px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
@@ -32,9 +32,9 @@ const Portfolio = () => (
     </section>
 
     {/* Editorial Project List */}
-    <section className="pb-32">
+    <section className="pb-20 sm:pb-32">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="max-w-6xl mx-auto space-y-24 md:space-y-32">
+        <div className="max-w-6xl mx-auto space-y-16 sm:space-y-24 md:space-y-32">
           {projects.map((project, i) => {
             const isReversed = i % 2 === 1;
             const indexLabel = String(i + 1).padStart(2, "0");
@@ -70,6 +70,7 @@ const Portfolio = () => (
                                 src={project.image}
                                 alt={project.title}
                                 loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-105"
                               />
                               {/* Gold tint overlay on hover */}

@@ -28,7 +28,7 @@ const ProjectDetail = () => {
   return (
     <Layout>
       {/* Cinematic Hero */}
-      <section className="relative h-[90vh] min-h-[600px] flex items-end overflow-hidden">
+      <section className="relative h-[80vh] sm:h-[90vh] min-h-[520px] sm:min-h-[600px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           {project.image ? (
             <img
@@ -36,6 +36,8 @@ const ProjectDetail = () => {
               alt={project.title}
               className="w-full h-full object-cover scale-105"
               loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           ) : (
             <div className="w-full h-full bg-secondary" />
@@ -96,7 +98,7 @@ const ProjectDetail = () => {
       </section>
 
       {/* The Narrative */}
-      <section className="py-24 md:py-36">
+      <section className="py-16 sm:py-24 md:py-36">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>
@@ -150,7 +152,7 @@ const ProjectDetail = () => {
 
       {/* Editorial Gallery */}
       {project.gallery && project.gallery.length > 0 && (
-        <section className="pb-24 md:pb-36">
+        <section className="pb-16 sm:pb-24 md:pb-36">
           <div className="container mx-auto px-6 md:px-12">
             <div className="max-w-6xl mx-auto">
               <ScrollReveal>
@@ -182,6 +184,7 @@ const ProjectDetail = () => {
                             src={img}
                             alt={`${project.title} — frame ${idx + 1}`}
                             loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover transition-all duration-[1500ms] ease-out group-hover:scale-110"
                           />
                           {/* Gold tint overlay */}
