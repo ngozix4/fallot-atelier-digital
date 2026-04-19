@@ -178,7 +178,11 @@ const ProjectDetail = () => {
               <ScrollReveal delay={0.1}>
                 <Carousel
                   opts={{ align: "center", loop: true }}
+                  plugins={[autoplayRef.current]}
                   className="relative"
+                  onMouseEnter={() => autoplayRef.current.stop()}
+                  onMouseLeave={() => autoplayRef.current.play()}
+                  onTouchStart={() => autoplayRef.current.stop()}
                 >
                   <CarouselContent className="-ml-4 md:-ml-8 py-12 md:py-20">
                     {project.gallery.map((img, idx) => {
