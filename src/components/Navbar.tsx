@@ -74,29 +74,34 @@ const Navbar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="fixed top-14 right-3 z-40 w-56 rounded-md border border-border/40 bg-background/70 backdrop-blur-xl shadow-lg flex flex-col items-start gap-3 px-5 py-5"
+            initial={{ opacity: 0, scale: 0.95, y: -8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -8 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed top-16 right-3 z-40 w-60 rounded-[2rem] border border-accent/20 bg-gradient-to-br from-background/80 via-background/70 to-accent/10 backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,0,0,0.5)] flex flex-col gap-2 p-3"
           >
-            {navLinks.map((link, i) => (
-              <motion.div
-                key={link.href}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
-              >
-                <Link
-                  to={link.href}
-                  className={`text-sm tracking-[0.15em] uppercase font-light transition-colors ${
-                    location.pathname === link.href ? "text-accent" : "text-foreground"
-                  }`}
+            {navLinks.map((link, i) => {
+              const isActive = location.pathname === link.href;
+              return (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.04, duration: 0.25 }}
                 >
-                  {link.label}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    to={link.href}
+                    className={`block w-full rounded-full px-5 py-2.5 text-xs tracking-[0.2em] uppercase font-light transition-all duration-300 border ${
+                      isActive
+                        ? "bg-accent/10 border-accent/40 text-accent shadow-[inset_0_0_12px_rgba(212,175,55,0.15)]"
+                        : "bg-background/40 border-border/30 text-foreground/80 hover:border-accent/30 hover:text-accent"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
