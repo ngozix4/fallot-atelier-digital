@@ -37,8 +37,8 @@ const Navbar = () => {
           scrolled ? "nav-solid border-b border-border" : "nav-transparent"
         }`}
       >
-        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between h-20">
-          <Link to="/" className="font-heading text-xl md:text-2xl tracking-[0.15em] font-light text-foreground">
+        <div className="container mx-auto px-4 md:px-12 flex items-center justify-between h-14 md:h-20">
+          <Link to="/" className="font-heading text-sm md:text-2xl tracking-[0.15em] font-light text-foreground">
             FALLOT CORRECTION
           </Link>
 
@@ -65,7 +65,7 @@ const Navbar = () => {
             className="lg:hidden text-foreground"
             aria-label="Toggle menu"
           >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </motion.nav>
