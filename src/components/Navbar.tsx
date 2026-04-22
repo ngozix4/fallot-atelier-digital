@@ -34,7 +34,7 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "nav-solid border-b border-border" : "nav-transparent"
+          scrolled ? "nav-transparent lg:nav-solid lg:border-b lg:border-border" : "nav-transparent"
         }`}
       >
         <div className="container mx-auto px-4 md:px-12 flex items-center justify-between h-14 md:h-20">
