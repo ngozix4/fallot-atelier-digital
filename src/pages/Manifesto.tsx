@@ -3,18 +3,18 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const Manifesto = () => (
   <Layout>
-    <section className="pt-32 pb-24 md:pt-44 md:pb-36">
-      <div className="container mx-auto px-6 md:px-12 max-w-3xl text-center">
+    <section className="pt-40 pb-28 md:pt-44 md:pb-36">
+      <div className="container mx-auto px-8 md:px-12 max-w-3xl text-center">
         <ScrollReveal>
-          <p className="text-caption text-accent mb-6">BRAND MANIFESTO</p>
+          <p className="text-caption text-accent mb-8">BRAND MANIFESTO</p>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <h1 className="heading-display text-foreground mb-20">
+          <h1 className="heading-display text-foreground mb-16 md:mb-20">
             Fallot Correction Studio
           </h1>
         </ScrollReveal>
 
-        <div className="space-y-10 text-editorial text-muted-foreground">
+        <div className="space-y-12 md:space-y-10 text-editorial text-muted-foreground">
           <ScrollReveal>
             <p className="heading-subsection text-foreground">We believe tailoring is architecture.</p>
           </ScrollReveal>
