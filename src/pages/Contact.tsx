@@ -12,29 +12,29 @@ const Contact = () => {
 
   return (
     <Layout>
-      <section className="relative pt-32 pb-24 md:pt-44 md:pb-36 overflow-hidden">
+      <section className="relative pt-40 pb-28 md:pt-44 md:pb-36 overflow-hidden">
         {/* Ambient background glow */}
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-accent/10 blur-[140px]" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[120px]" />
         </div>
 
-        <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+        <div className="container mx-auto px-8 md:px-12 max-w-3xl">
           <ScrollReveal>
-            <p className="text-caption text-accent mb-6 text-center">GET IN TOUCH</p>
+            <p className="text-caption text-accent mb-8 text-center">GET IN TOUCH</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h1 className="heading-display text-foreground mb-6 text-center">Contact</h1>
+            <h1 className="heading-display text-foreground mb-8 text-center">Contact</h1>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
-            <p className="text-editorial text-muted-foreground text-center mb-16 max-w-xl mx-auto">
+            <p className="text-editorial text-muted-foreground text-center mb-14 md:mb-16 max-w-xl mx-auto">
               For consultations, collaborations, or inquiries — reach out directly on WhatsApp or Instagram.
             </p>
           </ScrollReveal>
 
           {/* Glass contact cards */}
           <ScrollReveal delay={0.2}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
