@@ -74,22 +74,22 @@ const Navbar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-background flex flex-col items-center justify-center gap-8"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="fixed top-14 right-3 z-40 w-56 rounded-md border border-border/40 bg-background/70 backdrop-blur-xl shadow-lg flex flex-col items-start gap-3 px-5 py-5"
           >
             {navLinks.map((link, i) => (
               <motion.div
                 key={link.href}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.05 }}
               >
                 <Link
                   to={link.href}
-                  className={`heading-subsection transition-colors ${
+                  className={`text-sm tracking-[0.15em] uppercase font-light transition-colors ${
                     location.pathname === link.href ? "text-accent" : "text-foreground"
                   }`}
                 >
