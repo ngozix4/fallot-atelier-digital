@@ -127,12 +127,12 @@ const Index = () => {
             <div className="heartbeat-divider" />
           </ScrollReveal>
 
-          <div className="grid grid-cols-12 gap-4 md:gap-6 max-w-6xl mx-auto mt-16">
+          <div className="grid grid-cols-12 gap-8 md:gap-6 max-w-6xl mx-auto mt-12 md:mt-16">
             {projects.slice(0, 4).map((project, i) => {
               // Asymmetric editorial layout: tall, short, short, tall
               const isTall = i === 0 || i === 3;
               const colSpan = isTall ? "md:col-span-7" : "md:col-span-5";
-              const aspect = isTall ? "aspect-[4/5]" : "aspect-[4/5] md:aspect-[3/4]";
+              const aspect = isTall ? "aspect-[3/4] md:aspect-[4/5]" : "aspect-[3/4] md:aspect-[3/4]";
               const indexLabel = String(i + 1).padStart(2, "0");
 
               return (
@@ -140,8 +140,8 @@ const Index = () => {
                   <div className={`col-span-12 ${colSpan}`}>
                     <Link to={`/portfolio/${project.slug}`} className="group block relative">
                       {/* Index watermark */}
-                      <div className="absolute -top-4 -left-2 z-20 pointer-events-none">
-                        <span className="font-heading italic text-5xl md:text-6xl text-accent/30 leading-none">
+                      <div className="absolute -top-3 -left-1 md:-top-4 md:-left-2 z-20 pointer-events-none">
+                        <span className="font-heading italic text-4xl md:text-6xl text-accent/30 leading-none">
                           {indexLabel}
                         </span>
                       </div>
