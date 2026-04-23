@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
+import TestimonialToast from "@/components/TestimonialToast";
 import { projects } from "@/lib/projects";
 import heroImage from "@/assets/SewAfrica-Getting-An-Award.jpeg";
 import atelierImage from "@/assets/atelier-interior.jpg";
@@ -10,6 +11,7 @@ import atelierImage from "@/assets/atelier-interior.jpg";
 const Index = () => {
   return (
     <Layout>
+      <TestimonialToast />
       {/* Hero */}
       <section className="relative h-[100svh] min-h-[560px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
