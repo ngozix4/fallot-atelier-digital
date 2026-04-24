@@ -150,18 +150,23 @@ const ReviewForm = () => {
 
       <div>
         <label className={labelClasses}>
-          Social media link <span className="text-accent">*</span>
+          Instagram handle <span className="text-accent">*</span>
         </label>
-        <input
-          type="url"
-          required
-          value={form.social}
-          onChange={(e) => update("social", e.target.value)}
-          placeholder="Instagram, TikTok or LinkedIn URL"
-          className={fieldClasses}
-        />
+        <div className="flex items-center border-b border-border focus-within:border-accent transition-colors">
+          <span className="text-muted-foreground font-body pr-1 select-none">@</span>
+          <input
+            type="text"
+            required
+            value={form.social}
+            onChange={(e) =>
+              update("social", e.target.value.replace(/^@+/, "").trim())
+            }
+            placeholder="your_instagram_handle"
+            className="w-full bg-transparent outline-none py-3 text-foreground placeholder:text-muted-foreground/60 font-body"
+          />
+        </div>
         <p className="text-xs text-muted-foreground/70 mt-2 font-body italic">
-          Required so the studio can verify the review is from a real person.
+          Just your handle — no need for the full link. Required so the studio can verify the review is from a real person.
         </p>
       </div>
 
