@@ -48,9 +48,31 @@ const SpotlightCarousel = ({ reviews }: Props) => {
 
           <div className="w-12 h-px bg-accent/40 mx-auto mb-6" />
 
+          {/* Meta grid */}
+          <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto mb-8 text-left sm:text-center">
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.25em] text-accent/80 mb-1">Project</dt>
+              <dd className="font-body text-sm text-foreground">{r.project}</dd>
+            </div>
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.25em] text-accent/80 mb-1">Felt</dt>
+              <dd className="font-body text-sm text-foreground">{r.felt}</dd>
+            </div>
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.25em] text-accent/80 mb-1">Recommend</dt>
+              <dd className="font-body text-sm text-foreground">{r.recommend}</dd>
+            </div>
+          </dl>
+
+          {r.comments && (
+            <p className="font-heading italic text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+              {r.comments}
+            </p>
+          )}
+
           <p className="font-heading text-xl md:text-2xl text-accent mb-2">{r.name}</p>
           <p className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-            {r.project} · {formatReviewDate(r.date)}
+            {formatReviewDate(r.date)}
           </p>
           {r.verified && (
             <a
