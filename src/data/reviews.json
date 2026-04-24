@@ -1,3 +1,31 @@
 {
-  "reviews": []
+  "reviews": [
+    {
+      "id": "ngoni-m-2026-04-24",
+      "name": "Ngoni M.",
+      "socialHandle": "@profngozi",
+      "socialUrl": "https://instagram.com/profngozi",
+      "rating": 5,
+      "project": "Website",
+      "felt": "Amazed",
+      "appreciated": "The creativity poured into every detail — it felt like the studio truly understood the vision.",
+      "recommend": "Yes — they know their work and deliver with care.",
+      "date": "2026-04-24",
+      "verified": true
+    },
+    {
+      "id": "michael-k-2026-04-15",
+      "name": "Michael K.",
+      "socialHandle": "@michael_k",
+      "socialUrl": "https://instagram.com/michael_k",
+      "rating": 5,
+      "project": "Wedding dress",
+      "felt": "Beautiful",
+      "appreciated": "The attention to detail was incredible. My wedding dress fit perfectly.",
+      "recommend": "Yes, 100% — I would recommend Fallot Correction Studio to anyone looking for true craftsmanship.",
+      "comments": "Thank you for making such a meaningful day even more special.",
+      "date": "2026-04-15",
+      "verified": true
+    }
+  ]
 }
