@@ -3,9 +3,8 @@ import { motion } from "framer-motion";
 import { Star, Send, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
-// Web3Forms — replace WEB3FORMS_ACCESS_KEY with your real key
-// from https://web3forms.com (free, no account needed for first key).
-const WEB3FORMS_ACCESS_KEY = "REPLACE_WITH_YOUR_WEB3FORMS_KEY";
+// Web3Forms access key — public by design (safe to ship in client code).
+const WEB3FORMS_ACCESS_KEY = "16a4d2dd-266e-4db1-a33c-3771a8425d4d";
 
 interface FormState {
   name: string;
