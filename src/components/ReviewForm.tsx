@@ -51,6 +51,7 @@ const ReviewForm = () => {
         subject: `New Review from ${form.name || "Anonymous"} — Fallot Correction Studio`,
         from_name: "Fallot Studio Reviews",
         ...form,
+        social: `@${form.social} — https://instagram.com/${form.social}`,
         rating: `${form.rating} / 5`,
       };
       const res = await fetch("https://api.web3forms.com/submit", {
