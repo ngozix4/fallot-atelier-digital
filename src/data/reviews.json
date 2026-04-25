@@ -26,6 +26,60 @@
       "comments": "Thank you for making such a meaningful day even more special.",
       "date": "2026-04-15",
       "verified": true
+    },
+    {
+      "id": "amara-d-2026-04-02",
+      "name": "Amara D.",
+      "socialHandle": "@amara.designs",
+      "socialUrl": "https://instagram.com/amara.designs",
+      "rating": 5,
+      "project": "Evening gown",
+      "felt": "Confident",
+      "appreciated": "The silhouette was tailored so precisely it felt sculpted to me.",
+      "recommend": "Absolutely — a rare blend of artistry and discipline.",
+      "comments": "I've never received so many compliments in one night.",
+      "date": "2026-04-02",
+      "verified": true
+    },
+    {
+      "id": "lerato-s-2026-03-20",
+      "name": "Lerato S.",
+      "socialHandle": "@lerato.s",
+      "socialUrl": "https://instagram.com/lerato.s",
+      "rating": 5,
+      "project": "Bridal party styling",
+      "felt": "Held",
+      "appreciated": "The patience and clarity through every fitting made the process feel calm.",
+      "recommend": "Yes — without hesitation.",
+      "date": "2026-03-20",
+      "verified": true
+    },
+    {
+      "id": "ife-o-2026-03-08",
+      "name": "Ife O.",
+      "socialHandle": "@ife.o",
+      "socialUrl": "https://instagram.com/ife.o",
+      "rating": 4,
+      "project": "Custom suit",
+      "felt": "Elevated",
+      "appreciated": "The structure of the jacket was extraordinary — every line intentional.",
+      "recommend": "Yes, especially for anyone who values craft over trend.",
+      "comments": "Worth every moment of the process.",
+      "date": "2026-03-08",
+      "verified": true
+    },
+    {
+      "id": "kwame-a-2026-02-18",
+      "name": "Kwame A.",
+      "socialHandle": "@kwame.a",
+      "socialUrl": "https://instagram.com/kwame.a",
+      "rating": 5,
+      "project": "Photoshoot wardrobe",
+      "felt": "Inspired",
+      "appreciated": "The pieces told a story — the styling carried the entire shoot.",
+      "recommend": "Yes — a true creative partner.",
+      "date": "2026-02-18",
+      "verified": true
     }
   ]
 }
