@@ -40,13 +40,15 @@ const ProjectDetail = () => {
   return (
     <Layout>
       {/* Cinematic Hero */}
-      <section className="relative h-[80vh] sm:h-[90vh] min-h-[520px] sm:min-h-[600px] flex items-end overflow-hidden">
+      <section className="relative h-[80vh] sm:h-[90vh] min-h-[520px] sm:min-h-[600px] max-h-[900px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           {project.image ? (
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover scale-105"
+              style={{ objectPosition: "center 25%" }}
+              sizes="100vw"
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -202,7 +204,7 @@ const ProjectDetail = () => {
                       return (
                         <CarouselItem
                           key={idx}
-                          className="pl-4 md:pl-8 basis-[85%] sm:basis-[70%] md:basis-[55%] lg:basis-[45%]"
+                          className="pl-4 md:pl-8 basis-[80%] sm:basis-[60%] md:basis-[50%] lg:basis-[45%]"
                         >
                           <div
                             className={`${drift} ${rotate} ${floatDelay} float-frame group relative overflow-hidden border gold-border gold-border-hover transition-all duration-700`}
@@ -213,6 +215,8 @@ const ProjectDetail = () => {
                                 alt={`${project.title} — frame ${idx + 1}`}
                                 loading={idx < 2 ? "eager" : "lazy"}
                                 decoding="async"
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 55vw, 45vw"
+                                style={{ objectPosition: "center 20%" }}
                                 className="w-full h-full object-cover transition-all duration-[1500ms] ease-out group-hover:scale-110"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

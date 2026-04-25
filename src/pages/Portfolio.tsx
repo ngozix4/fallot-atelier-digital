@@ -63,7 +63,7 @@ const Portfolio = () => (
                         </div>
 
                         {/* Image frame */}
-                        <div className="aspect-[3/4] bg-secondary overflow-hidden border gold-border gold-border-hover transition-all duration-700 relative">
+                        <div className="aspect-[3/4] bg-secondary overflow-hidden border gold-border gold-border-hover transition-all duration-700 relative w-full max-w-[500px] mx-auto">
                           {project.image ? (
                             <>
                               <img
@@ -71,6 +71,8 @@ const Portfolio = () => (
                                 alt={project.title}
                                 loading="lazy"
                                 decoding="async"
+                                sizes="(max-width: 640px) 60vw, (max-width: 1024px) 45vw, 33vw"
+                                style={{ objectPosition: "center 20%" }}
                                 className="w-full h-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-105"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
