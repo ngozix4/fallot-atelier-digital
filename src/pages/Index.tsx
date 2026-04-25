@@ -13,12 +13,14 @@ const Index = () => {
     <Layout>
       <TestimonialToast />
       {/* Hero */}
-      <section className="relative h-[100svh] min-h-[560px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100svh] min-h-[560px] max-h-[900px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Luxury couture fabric in motion"
             className="w-full h-full object-cover"
+            style={{ objectPosition: "center 30%" }}
+            sizes="100vw"
             loading="eager"
             decoding="async"
             fetchPriority="high"
@@ -95,11 +97,13 @@ const Index = () => {
       {/* Featured Image */}
       <ScrollReveal>
         <section className="px-6 md:px-12">
-          <div className="max-w-5xl mx-auto">
+          <div className="img-atelier-fluid">
             <img
               src={atelierImage}
               alt="Inside the Fallot Correction Studio atelier"
-              className="w-full aspect-[3/2] object-cover"
+              className="responsive-img w-full aspect-[4/3] sm:aspect-[3/2]"
+              style={{ objectPosition: "center 40%" }}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 900px"
               loading="lazy"
               decoding="async"
             />
@@ -153,7 +157,7 @@ const Index = () => {
                             {indexLabel}
                           </div>
 
-                          <div className="aspect-[3/4] bg-secondary overflow-hidden border gold-border gold-border-hover transition-all duration-700 relative">
+                          <div className="aspect-[3/4] bg-secondary overflow-hidden border gold-border gold-border-hover transition-all duration-700 relative w-full max-w-[500px] mx-auto">
                             {project.image ? (
                               <>
                                 <img
@@ -161,6 +165,8 @@ const Index = () => {
                                   alt={project.title}
                                   loading="lazy"
                                   decoding="async"
+                                  sizes="(max-width: 640px) 60vw, (max-width: 1024px) 45vw, 33vw"
+                                  style={{ objectPosition: "center 20%" }}
                                   className="w-full h-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
