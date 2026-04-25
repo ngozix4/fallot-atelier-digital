@@ -15,12 +15,15 @@ const About = () => (
 
         {/* Portrait */}
         <ScrollReveal delay={0.2}>
-          <div className="aspect-[3/4] max-w-sm mx-auto bg-secondary mb-16 overflow-hidden border gold-border gold-glow">
+          <div className="img-portrait-fluid aspect-[3/4] bg-secondary mb-16 overflow-hidden border gold-border gold-glow">
             <img
               src={portrait}
               alt="Portrait of the designer"
-              className="w-full h-full object-cover"
+              className="responsive-img w-full h-full"
+              style={{ objectPosition: "center 20%" }}
+              sizes="(max-width: 640px) 60vw, (max-width: 1024px) 40vw, 400px"
               loading="lazy"
+              decoding="async"
             />
           </div>
         </ScrollReveal>
