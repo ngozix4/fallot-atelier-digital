@@ -157,6 +157,27 @@
 }
 
 @layer utilities {
+  .responsive-img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-portrait-fluid {
+    width: clamp(240px, 60vw, 400px);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-atelier-fluid {
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .gold-gradient {
     background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--gold-light)));
   }
