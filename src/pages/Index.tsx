@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import TestimonialToast from "@/components/TestimonialToast";
 import { projects } from "@/lib/projects";
-import heroImage from "@/assets/SewAfrica-Getting-An-Award.jpeg";
+import heroImage from "@/assets/fallot-correction-orange-dress4.jpg";
 import atelierImage from "@/assets/atelier-interior.jpg";
 
 const Index = () => {
@@ -17,9 +17,8 @@ const Index = () => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Luxury couture fabric in motion"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: "center 30%" }}
+            alt="Fallot Correction Studio — bespoke orange couture dress"
+            className="w-full h-full object-cover object-[center_top] sm:object-[center_25%]"
             sizes="100vw"
             loading="eager"
             decoding="async"
