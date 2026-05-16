@@ -4,15 +4,11 @@ import { Quote } from "lucide-react";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import ReviewForm from "@/components/ReviewForm";
-import SpotlightCarousel from "@/components/review-styles/SpotlightCarousel";
 import TimelineCard from "@/components/review-styles/TimelineCard";
 import { approvedReviews } from "@/lib/reviews";
 
-type StyleId = "spotlight" | "timeline";
-
 const Reviews = () => {
   const [showForm, setShowForm] = useState(false);
-  const [style, setStyle] = useState<StyleId>("spotlight");
 
   return (
     <Layout>
@@ -79,30 +75,7 @@ const Reviews = () => {
               </div>
             </ScrollReveal>
           ) : (
-            <>
-              {/* Style switcher */}
-              <div className="flex items-center justify-center gap-2 mb-12">
-                {([
-                  { id: "spotlight", label: "Spotlight" },
-                  { id: "timeline", label: "Timeline" },
-                ] as { id: StyleId; label: string }[]).map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => setStyle(s.id)}
-                    className={`px-5 py-2 text-[10px] uppercase tracking-[0.25em] border transition-colors duration-300 ${
-                      style === s.id
-                        ? "border-accent text-accent-foreground bg-accent"
-                        : "border-muted-foreground/30 text-muted-foreground hover:text-accent hover:border-accent"
-                    }`}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
-
-              {style === "spotlight" && <SpotlightCarousel reviews={approvedReviews} />}
-              {style === "timeline" && <TimelineCard reviews={approvedReviews} />}
-            </>
+            <TimelineCard reviews={approvedReviews} />
           )}
         </div>
       </section>
