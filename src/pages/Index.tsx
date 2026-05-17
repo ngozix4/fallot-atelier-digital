@@ -1,30 +1,86 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import TestimonialToast from "@/components/TestimonialToast";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import { projects } from "@/lib/projects";
 import heroImage from "@/assets/fallot-correction-orange-dress4.jpg";
+import heroImage2 from "@/assets/fallot-correction-traditional-dress7.jpg";
+import heroImage3 from "@/assets/fallot-correction-orange-dress5.jpg";
+import heroImage4 from "@/assets/fallot-correction-red-dress8.jpg";
+import heroImage5 from "@/assets/fallot-correction-red-dress1.jpg";
 import atelierImage from "@/assets/atelier-interior.jpg";
 
+const heroSlides = [
+  { src: heroImage, alt: "Fallot Correction Studio — bespoke orange couture dress" },
+  { src: heroImage2, alt: "Fallot Correction Studio — traditional couture piece" },
+  { src: heroImage3, alt: "Fallot Correction Studio — orange demi-couture gown" },
+  { src: heroImage4, alt: "Fallot Correction Studio — red bespoke dress" },
+  { src: heroImage5, alt: "Fallot Correction Studio — red couture silhouette" },
+];
+
 const Index = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
+
   return (
     <Layout>
       <TestimonialToast />
       {/* Hero */}
       <section className="relative h-[100svh] min-h-[560px] max-h-[900px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Fallot Correction Studio — bespoke orange couture dress"
-            className="w-full h-full object-cover object-[center_top] sm:object-[center_25%]"
-            sizes="100vw"
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-charcoal/60" />
+          <Carousel
+            setApi={setApi}
+            opts={{ loop: true, align: "start" }}
+            plugins={[Autoplay({ delay: 5000, stopOnInteraction: false })]}
+            className="w-full h-full"
+          >
+            <CarouselContent className="ml-0 h-[100svh] min-h-[560px] max-h-[900px]">
+              {heroSlides.map((slide, i) => (
+                <CarouselItem key={i} className="pl-0 h-full">
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    className="w-full h-full object-cover object-[center_top] sm:object-[center_25%]"
+                    sizes="100vw"
+                    loading={i === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    fetchPriority={i === 0 ? "high" : "auto"}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+          <div className="absolute inset-0 bg-charcoal/60 pointer-events-none" />
+
+          {/* Slide indicators */}
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => api?.scrollTo(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  current === i ? "w-8 bg-accent" : "w-1.5 bg-cream/40"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="relative z-10 text-center px-6">
