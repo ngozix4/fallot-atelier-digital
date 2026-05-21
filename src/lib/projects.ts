@@ -36,6 +36,8 @@ import fallotTrad4 from "@/assets/fallot-correction-traditional-dress4.jpg";
 import fallotTrad5 from "@/assets/fallot-correction-traditional-dress5.jpg";
 import fallotTrad6 from "@/assets/fallot-correction-traditional-dress6.jpg";
 import fallotTrad7 from "@/assets/fallot-correction-traditional-dress7.jpg";
+import xviiVictorianCover from "@/assets/xvii-victorian-cover.png";
+import tokeloLakaCover from "@/assets/tokelo-laka-cover.png";
 
 export interface Project {
   slug: string;
@@ -95,6 +97,7 @@ export const projects: Project[] = [
     description: "An apprenticeship in the architecture of bridal couture. Beneath the hands of a master, I learned that a wedding gown is not sewn — it is engineered. Patience replaced urgency; structure became a love language.",
     narrativeTitle: "A Study in",
     narrativeHighlight: "Devotion",
+    image: xviiVictorianCover,
     instagramHandle: "@xviii_victorian",
     instagramUrl: "https://www.instagram.com/xviii_victorian/",
   },
@@ -108,18 +111,9 @@ export const projects: Project[] = [
     description: "Two voices, one cloth. A collaboration that proved restraint and expression are not opposites — they are partners. Together we shaped pieces that spoke softly but carried the room, garments built on mutual respect for the craft.",
     narrativeTitle: "A Study in",
     narrativeHighlight: "Dialogue",
+    image: tokeloLakaCover,
     instagramHandle: "@tokelo_laka",
     instagramUrl: "https://www.instagram.com/tokelo_laka/",
-  },
-  {
-    slug: "netflix-the-poligamy",
-    title: "Netflix – The Poligamy",
-    year: "2025",
-    role: "Costume Designer",
-    collaborators: "Darion Hing Productions",
-    description: "Costume as character. Every seam carried a backstory, every silhouette a secret. Designing for the screen taught me that a garment can speak before an actor does — and that true craftsmanship knows when to disappear into the role.",
-    narrativeTitle: "A Study in",
-    narrativeHighlight: "Character",
   },
   {
     slug: "fallot-correction-studio-launch",
