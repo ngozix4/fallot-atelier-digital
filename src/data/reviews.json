@@ -1,3 +1,17 @@
 {
-  "reviews": []
+  "reviews": [
+    {
+      "id": "rorisang-2026-06",
+      "name": "Rorisang",
+      "socialHandle": "@roseallah_",
+      "socialUrl": "https://instagram.com/roseallah_",
+      "rating": 5,
+      "project": "2 piece suit for a wedding",
+      "felt": "Confident very proud to wear",
+      "appreciated": "The attention to detail every touch looked amazing",
+      "recommend": "Yes I absolutely would. The service is amazing the clothes are absolutely stunning",
+      "date": "2026-06-22",
+      "verified": true
+    }
+  ]
 }
