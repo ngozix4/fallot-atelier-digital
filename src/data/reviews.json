@@ -12,6 +12,62 @@
       "recommend": "Yes I absolutely would. The service is amazing the clothes are absolutely stunning",
       "date": "2026-06-22",
       "verified": true
+    },
+    {
+      "id": "angellaropav-2026-06",
+      "name": "AngellaRopav",
+      "socialHandle": "@Skye__berry",
+      "socialUrl": "https://instagram.com/Skye__berry",
+      "rating": 5,
+      "project": "Dress",
+      "felt": "Beautiful and very confident",
+      "appreciated": "Creativity and communication",
+      "recommend": "Yes they are the best, they exceeded my expectations made me look and feel like a queen",
+      "date": "2026-06-23",
+      "verified": true
+    },
+    {
+      "id": "abigainm-2026-06",
+      "name": "Abigain M",
+      "email": "abegail.mannye@gmail.com",
+      "socialHandle": "@Itsabigain_m",
+      "socialUrl": "https://instagram.com/Itsabigain_m",
+      "rating": 5,
+      "project": "Corset dress",
+      "felt": "Confident",
+      "appreciated": "Attention to detail, the communication and the service itself",
+      "recommend": "Yes, because the work is spectacular",
+      "comments": "I just love the work",
+      "date": "2026-06-23",
+      "verified": true
+    },
+    {
+      "id": "hannie-2026-06",
+      "name": "Hannie",
+      "email": "molefehannie@gmail.com",
+      "socialHandle": "@Molefehannie",
+      "socialUrl": "https://instagram.com/Molefehannie",
+      "rating": 5,
+      "project": "Evening gown",
+      "felt": "Pro",
+      "appreciated": "All of the above",
+      "recommend": "Yes I would because he's the best at what he does and very professional",
+      "date": "2026-06-23",
+      "verified": true
+    },
+    {
+      "id": "mpono-2026-06",
+      "name": "Mpono",
+      "email": "tshepangmpon@gmail.com",
+      "socialHandle": "@Mpono",
+      "socialUrl": "https://instagram.com/Mpono",
+      "rating": 5,
+      "project": "Wedding dress",
+      "felt": "Beautiful",
+      "appreciated": "That my waist was snatched and it catered to my body",
+      "recommend": "Most definitely",
+      "date": "2026-06-23",
+      "verified": true
     }
   ]
 }
