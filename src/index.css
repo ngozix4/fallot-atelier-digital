@@ -261,6 +261,11 @@
     50% { transform: translateY(-8px); }
   }
 
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .float-frame { animation: none; }
   }
