@@ -49,7 +49,16 @@ const Clients = () => {
         );
 
       const built: GalleryItem[] = (signed ?? [])
-        .map((s, i) => (s.signedUrl ? { ...flat[i], url: s.signedUrl } : null))
+        .map((s, i) =>
+          s.signedUrl
+            ? {
+                url: s.signedUrl,
+                name: flat[i].name,
+                handle: flat[i].handle,
+                project: flat[i].project,
+              }
+            : null
+        )
         .filter((x): x is GalleryItem => x !== null);
 
       if (!cancelled) {
