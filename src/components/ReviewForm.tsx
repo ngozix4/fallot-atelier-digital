@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Send, CheckCircle2, ImagePlus, X } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 // Web3Forms access key — public by design (safe to ship in client code).
 const WEB3FORMS_ACCESS_KEY = "16a4d2dd-266e-4db1-a33c-3771a8425d4d";
@@ -143,39 +144,70 @@ const ReviewForm = () => {
     }
     setSubmitting(true);
     try {
-      // Use FormData so we can include photo attachments for Web3Forms.
-      const fd = new FormData();
-      fd.append("access_key", WEB3FORMS_ACCESS_KEY);
-      fd.append("subject", `New Review from ${form.name || "Anonymous"} — Fallot Correction Studio`);
-      fd.append("from_name", "Fallot Studio Reviews");
-      fd.append("name", form.name);
-      fd.append("email", form.email);
-      fd.append("social", `@${form.social} — https://instagram.com/${form.social}`);
-      fd.append("rating", `${form.rating} / 5`);
-      fd.append("project", form.project);
-      fd.append("felt", form.felt);
-      fd.append("appreciated", form.appreciated);
-      fd.append("recommend", form.recommend);
-      fd.append("comments", form.comments);
-      photos.forEach((file, i) => {
-        fd.append(`photo_${i + 1}`, file, file.name);
-      });
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: fd,
-      });
-      const data = await res.json();
-      if (data.success) {
-        recordSubmission();
-        previews.forEach((url) => URL.revokeObjectURL(url));
-        setPhotos([]);
-        setPreviews([]);
-        setSubmitted(true);
-        setForm(initialState);
-        toast.success("Thank you. Your review will appear once verified.");
-      } else {
-        throw new Error(data.message || "Submission failed");
+      // 1) Upload photos to storage (private bucket, anon-insert allowed).
+      const uploadedPaths: string[] = [];
+      for (let i = 0; i < photos.length; i++) {
+        const file = photos[i];
+        const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+        const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${i}.${ext}`;
+        const { error: upErr } = await supabase.storage
+          .from("review-photos")
+          .upload(path, file, { contentType: file.type, upsert: false });
+        if (upErr) throw upErr;
+        uploadedPaths.push(path);
       }
+
+      // 2) Insert the review row (status defaults to 'pending').
+      const { error: insErr } = await supabase.from("reviews").insert({
+        name: form.name || "Anonymous",
+        email: form.email || null,
+        social_handle: `@${form.social}`,
+        social_url: `https://instagram.com/${form.social}`,
+        rating: form.rating,
+        project: form.project,
+        felt: form.felt,
+        appreciated: form.appreciated,
+        recommend: form.recommend,
+        comments: form.comments || null,
+        photo_urls: uploadedPaths,
+      });
+      if (insErr) throw insErr;
+
+      // 3) Fire off an email notification via Web3Forms (text-only, no attachments
+      // since file uploads require their paid tier). Failures here are non-fatal.
+      try {
+        const photoNote = uploadedPaths.length
+          ? `\n\n📷 ${uploadedPaths.length} photo(s) attached — view them in the Cloud dashboard under storage → review-photos.`
+          : "";
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: `New Review from ${form.name || "Anonymous"} — Fallot Correction Studio`,
+            from_name: "Fallot Studio Reviews",
+            name: form.name,
+            email: form.email,
+            social: `@${form.social} — https://instagram.com/${form.social}`,
+            rating: `${form.rating} / 5`,
+            project: form.project,
+            felt: form.felt,
+            appreciated: form.appreciated,
+            recommend: form.recommend,
+            comments: (form.comments || "") + photoNote,
+          }),
+        });
+      } catch (notifyErr) {
+        console.warn("Email notification failed (review still saved):", notifyErr);
+      }
+
+      recordSubmission();
+      previews.forEach((url) => URL.revokeObjectURL(url));
+      setPhotos([]);
+      setPreviews([]);
+      setSubmitted(true);
+      setForm(initialState);
+      toast.success("Thank you. Your review will appear once verified.");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Please try again or email studio@fallotstudio.com.");
