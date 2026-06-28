@@ -48,18 +48,17 @@ const Clients = () => {
           60 * 60 * 24 * 365 // 1 year
         );
 
-      const built: GalleryItem[] = (signed ?? [])
-        .map((s, i) =>
-          s.signedUrl
-            ? {
-                url: s.signedUrl,
-                name: flat[i].name,
-                handle: flat[i].handle,
-                project: flat[i].project,
-              }
-            : null
-        )
-        .filter((x): x is GalleryItem => x !== null);
+      const built: GalleryItem[] = [];
+      (signed ?? []).forEach((s, i) => {
+        if (s.signedUrl) {
+          built.push({
+            url: s.signedUrl,
+            name: flat[i].name,
+            handle: flat[i].handle,
+            project: flat[i].project,
+          });
+        }
+      });
 
       if (!cancelled) {
         setItems(built);
