@@ -1,14 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 import ReviewForm from "@/components/ReviewForm";
 import TimelineCard from "@/components/review-styles/TimelineCard";
-import { approvedReviews } from "@/lib/reviews";
+import { approvedReviews, type Review } from "@/lib/reviews";
+import { supabase } from "@/integrations/supabase/client";
 
 const Reviews = () => {
   const [showForm, setShowForm] = useState(false);
+  const [cloudReviews, setCloudReviews] = useState<Review[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase
+        .from("reviews")
+        .select("id, name, social_handle, social_url, rating, project, felt, appreciated, recommend, comments, created_at")
+        .eq("status", "approved")
+        .order("created_at", { ascending: false });
+      if (error || !data || cancelled) return;
+      const mapped: Review[] = data.map((r) => ({
+        id: r.id,
+        name: r.name,
+        socialHandle: r.social_handle ?? undefined,
+        socialUrl: r.social_url ?? "",
+        rating: r.rating as Review["rating"],
+        project: r.project,
+        felt: r.felt,
+        appreciated: r.appreciated,
+        recommend: r.recommend,
+        comments: r.comments ?? undefined,
+        date: (r.created_at ?? new Date().toISOString()).slice(0, 10),
+        verified: true,
+      }));
+      setCloudReviews(mapped);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const allReviews = [...cloudReviews, ...approvedReviews].sort((a, b) =>
+    a.date < b.date ? 1 : -1
+  );
 
   return (
     <Layout>
@@ -61,7 +97,7 @@ const Reviews = () => {
       {/* Reviews list */}
       <section className="pb-24 md:pb-36">
         <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-          {approvedReviews.length === 0 ? (
+          {allReviews.length === 0 ? (
             <ScrollReveal>
               <div className="max-w-xl mx-auto text-center py-20 md:py-28">
                 <Quote className="w-10 h-10 text-accent/60 mx-auto mb-6" strokeWidth={1.2} />
@@ -75,7 +111,7 @@ const Reviews = () => {
               </div>
             </ScrollReveal>
           ) : (
-            <TimelineCard reviews={approvedReviews} />
+            <TimelineCard reviews={allReviews} />
           )}
         </div>
       </section>
